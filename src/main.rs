@@ -25,6 +25,8 @@ fn main() {
 
     let mut args = std::env::args();
     args.next().unwrap();
+    args.next().unwrap();
+
     let branch = args
         .next()
         .expect("Expected branch, example usage: cargo altvup release");
