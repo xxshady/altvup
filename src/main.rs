@@ -31,7 +31,11 @@ fn main() {
 
     let client = Client::new();
 
-    println!("Selected branch: {}", branch.bright_purple());
+    println!(
+        "Selected {} branch: {}",
+        "alt:V".bright_green(),
+        branch.bright_purple()
+    );
 
     match branch.as_str() {
         "dev" => {
