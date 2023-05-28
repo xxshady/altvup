@@ -6,6 +6,7 @@ rust-version = "1.69.0"
 license = "MIT"
 repository = "https://github.com/xxshady/cargo-altvup"
 readme = "README.md"
+description = "alt:V Rust Module Updater"
 
 [[bin]]
 name = "cargo-altvup"
