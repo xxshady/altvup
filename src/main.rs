@@ -23,9 +23,7 @@ fn main() {
 
     print_altvup();
 
-    let mut args = std::env::args();
-    args.next().unwrap();
-    args.next().unwrap();
+    let mut args = std::env::args().skip(2);
 
     let branch = args
         .next()
@@ -44,10 +42,18 @@ fn main() {
             let releases = get_releases(&client);
             let prerelease = releases
                 .into_iter()
-                .find(|v| v.prerelease)
+                .find(|v| v.name.starts_with("dev-v"))
                 .expect("Cannot find prerelease in releases of altv-rust repo");
 
             download_module_from_release(&client, prerelease);
+        }
+        "rc" => {
+            let releases = get_releases(&client);
+            let release = releases
+                .into_iter()
+                .find(|v| v.name.starts_with("rc-v"))
+                .expect("Cannot find release in releases of altv-rust repo");
+            download_module_from_release(&client, release);
         }
         "release" => {
             let releases = get_releases(&client);
